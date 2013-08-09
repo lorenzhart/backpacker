@@ -1,0 +1,28 @@
+<h1><%= @question.title %></h1>
+
+<%= @question.content %>
+<%= link_to 'home', questions_path %>
+
+<h2>Comments<h2>
+<ul>
+<% if @question.answers.any? %>
+<% @question.answers.each do |answer| %>
+<li><%= answer.answer %></li>
+<% end %>
+<% else %>
+<li>no comment yet</li>
+<% end %>
+</ul>
+
+<h2>Add a Answer</h2>
+<%= form_for([@question, @answer]) do |f| %>
+<div class="field">
+	<%= f.label :answer %>
+	<%= f.text_area :answer %>	
+</div>
+<div class="actions">
+	<%= f.submit %>	
+</div>
+<% end %>
+
+<%= link_to 'home', questions_path %>

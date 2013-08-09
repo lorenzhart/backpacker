@@ -1,0 +1,18 @@
+<h1>Backpacker</h1>
+<h2>つながる、すごい！</h2>
+
+
+<h3>新着のクエスト</h3>
+<ul> 
+<% @questions.each do |question| %>
+<li>
+	<%= link_to question.title, question_path(question) %>
+	<%= link_to 'Edit', edit_question_path(question) %>
+</li>
+<% end %>
+
+<%= current_user.id %>
+</ul>
+
+<%= link_to 'New', new_question_path %>
+

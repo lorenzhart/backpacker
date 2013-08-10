@@ -1,19 +1,61 @@
 <h1>Backpacker</h1>
-<h2>つながる、すごい！</h2>
+
+<h2>あなたに託されたクエスト</h2>
 
 
-<h3>新着のクエスト</h3>
-<ul> 
-<% @questions.each do |question| %>
-<li>
-	<%= link_to question.title, question_path(question) %>
-	<%= link_to question.user_id, question_path(question) %>
-	<%= link_to 'Edit', edit_question_path(question) %>
+<div class="row-fluid"> 
 
-</li>
+<% @received_questions.each do |received_question| %>
+
+	<div class="quest span4">
+			<div class="row_fluid">
+				<div class="span4">
+					<%= link_to received_question.user.try(:name), question_path(received_question) %>
+				</div>
+				<div class="span8">
+					<%= link_to received_question.title, question_path(received_question) %>
+					<div class="row_fluid">
+						<div class="span12">
+						<%= link_to received_question.content, question_path(received_question) %>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+<% end %>
+</div>
+
+
+
+
+
+
+
+<h2>新着のクエスト</h2>
+<% @questions.each_slice(3) do |questions| %>
+<div class="row-fluid">
+<% questions.each do |question| %>
+	<div class="quest span4">
+			<div class="row_fluid">
+				<div class="span4">
+					<%= link_to question.user.try(:name), question_path(question) %>
+				</div>
+				<div class="span8">
+					<%= link_to question.title, question_path(question) %>
+					<div class="row_fluid">
+						<div class="span12">
+						<%= link_to question.content, question_path(question) %>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+<% end %>
+</div>
 <% end %>
 
-</ul>
+<h2>New Quest</h2>
 
-<%= link_to 'New', new_question_path %>
+<%= render 'form' %>
 
+<%#= link_to 'New', new_question_path %>

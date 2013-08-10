@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130810083311) do
+ActiveRecord::Schema.define(version: 20130810161801) do
 
   create_table "answers", force: true do |t|
     t.text     "answer"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20130810083311) do
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+
+  create_table "paths", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "paths", ["from_user_id"], name: "index_paths_on_from_user_id"
+  add_index "paths", ["question_id"], name: "index_paths_on_question_id"
+  add_index "paths", ["to_user_id"], name: "index_paths_on_to_user_id"
 
   create_table "questions", force: true do |t|
     t.string   "title"
@@ -48,6 +60,7 @@ ActiveRecord::Schema.define(version: 20130810083311) do
     t.string   "name"
     t.integer  "uid"
     t.string   "provider"
+    t.string   "token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

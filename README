@@ -1,0 +1,17 @@
+railsのバグあるある
+
+- まずは、サーバを立ち上げ直してみる。
+
+
+・rails s が上手くいかない。
+
+- エラー
+A server is already running. Check /Users/Lorenzhart/work/railsprojects/backpacker/tmp/pids/server.pid.
+
+- 前回、ctr+zなどで停止してしまった場合。
+プロセスが正しく閉じていない。実際には、まだportにつながったままになっている。
+ps aux | grep rails
+kill -9 number
+
+- undefined method `~~~~~~~' for nil:NilClass
+なんか空っぽのデータを呼ぼうとしている。

@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :trackable, :omniauthable
   has_many :questions
   has_many :answers
+  has_many :send_paths, :class_name => 'Path', :foreign_key => 'from_user_id'
+  has_many :received_paths, :class_name => 'Path', :foreign_key => 'to_user_id'
+  has_many :received_questions, :source => :to_user, :through => :received_paths
+
   # Setup accessible (or protected) attributes for your model
   #attr_accessible :email, :password, :name, :provider, :uid
   # attr_accessible :title, :body
@@ -17,7 +21,8 @@ class User < ActiveRecord::Base
                          provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
-                         password:Devise.friendly_token[0,20]
+                         password:Devise.friendly_token[0,20],
+                         token:auth.credentials.token
                          )
     end
     user
@@ -31,4 +36,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def facebook_friends
+    access_token = self.token
+    @graph = Koala::Facebook::API.new(access_token)
+    friends = @graph.get_connections("me", "friends")
+
+    return friends
+  end
 end

@@ -1,15 +1,15 @@
-<h1><%= @question.title %></h1>
-
-<%= @question.content %>
+<h2>Quest</h2>
+<div class="quest_t"><%= @question.title %></div>
+<div class="quest_c"><%= @question.content %></div>
+</ul>
 <%= link_to 'home', questions_path %>
 
-<h2>Comments<h2>
+<h2>Comments</h2>
 <ul>
 <% if @question.answers.any? %>
 <% @question.answers.each do |answer| %>
-<li> Username: <%= answer.user_id %> </li>
-<li> Answer: <%= answer.answer %></li>
-</br>
+<div class="answer_u"> Username: <%= answer.user_id %> </div>
+<div class="answer_c"> Answer: <%= answer.answer %></div>
 <% end %>
 <% else %>
 <li>no comment yet</li>
@@ -27,4 +27,11 @@
 </div>
 <% end %>
 
+<h2>Path</h2>
+<span>解決できそうな友人を紹介してみよう</span>
+<ul>
+<% @friends.each do |friend| %>
+<li><%= friend["name"] %></li>
+<% end %>
+</ul>
 <%= link_to 'home', questions_path %>

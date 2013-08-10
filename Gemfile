@@ -7,7 +7,14 @@ gem 'rails', '4.0.0.rc2'
 #facebook authentification
 gem "devise"
 gem "omniauth-facebook"
+gem "fbgraph"
+#facebook api
+gem "koala"
 
+#twitter-bootstrap-rails
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
 # Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3'

@@ -2,11 +2,14 @@ class QuestionsController < ApplicationController
 
 	def index
 		@questions = Question.all
+		@received_questions = current_user.try(:received_questions)||[]
+		@question = Question.new
 	end
 
 	def show
 		@question = Question.find(params[:id])
 		@answer = Question.find(params[:id]).answers.build
+		@friends = current_user.facebook_friends
 	end
 
 	def create
@@ -21,7 +24,6 @@ class QuestionsController < ApplicationController
 
 	def new
 		@question = Question.new
-
 	end
 
 

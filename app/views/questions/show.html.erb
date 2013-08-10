@@ -29,9 +29,36 @@
 
 <h2>Path</h2>
 <span>解決できそうな友人を紹介してみよう</span>
+
 <ul>
 <% @friends.each do |friend| %>
 <li><%= friend["name"] %></li>
 <% end %>
 </ul>
+
+<%= form_for(@question) do |f| %>
+<div class="field">
+	<%= f.label :title %>
+	<%= f.text_field :title %>	
+</div>
+
+<div class="field">
+	<%= f.label :content %>
+	<%= f.text_field :content %>
+</div>
+
+<div class="actions">
+
+	<%= f.submit %>	
+</div>
+
+<% end %>
+
+
+
+
+
+
+
+
 <%= link_to 'home', questions_path %>

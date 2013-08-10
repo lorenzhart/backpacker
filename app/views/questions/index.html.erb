@@ -7,11 +7,12 @@
 <% @questions.each do |question| %>
 <li>
 	<%= link_to question.title, question_path(question) %>
+	<%= link_to question.user_id, question_path(question) %>
 	<%= link_to 'Edit', edit_question_path(question) %>
+
 </li>
 <% end %>
 
-<%= current_user.id %>
 </ul>
 
 <%= link_to 'New', new_question_path %>

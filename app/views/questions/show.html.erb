@@ -7,7 +7,9 @@
 <ul>
 <% if @question.answers.any? %>
 <% @question.answers.each do |answer| %>
-<li><%= answer.answer %></li>
+<li> Username: <%= answer.user_id %> </li>
+<li> Answer: <%= answer.answer %></li>
+</br>
 <% end %>
 <% else %>
 <li>no comment yet</li>
@@ -18,7 +20,7 @@
 <%= form_for([@question, @answer]) do |f| %>
 <div class="field">
 	<%= f.label :answer %>
-	<%= f.text_area :answer %>	
+	<%= f.text_area :answer %>		
 </div>
 <div class="actions">
 	<%= f.submit %>	

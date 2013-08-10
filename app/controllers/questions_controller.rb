@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
 
 	def create
 		@question = Question.new(params.require(:question).permit(:title, :content, :resolved))
-
+		@question.user_id = current_user.id
 		if @question.save
 			redirect_to questions_path
 		else

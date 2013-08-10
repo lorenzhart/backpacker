@@ -1,5 +1,6 @@
 Backpacker::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  
   resources :questions do
     #get 'answers' => 'answers#index'
     resources :answers

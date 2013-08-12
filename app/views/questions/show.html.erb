@@ -32,7 +32,7 @@
 <%= form_for [@question, @path] do |f| %>
 	<% @friends.each do |friend| %>
 	<div class="field">
-		<%= f.radio_button :to_user, friend["name"] %><%= friend["name"] %>
+		<%= f.radio_button :to_user, friend["id"].to_i %><%= friend["name"] %>
 	</div>
 	<% end %>
 	<div class="actions">

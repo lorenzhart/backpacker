@@ -3,6 +3,7 @@ Backpacker::Application.routes.draw do
   
   resources :questions do
     #get 'answers' => 'answers#index'
+    resources :paths, :only => [:create]
     resources :answers
   end
   

@@ -9,7 +9,8 @@ class QuestionsController < ApplicationController
 	def show
 		@question = Question.find(params[:id])
 		@answer = Question.find(params[:id]).answers.build
-		@friends = current_user.facebook_friends
+		@friends = current_user.try(:facebook_friends)
+		@path = Path.new
 	end
 
 	def create

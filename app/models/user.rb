@@ -36,11 +36,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  
   def facebook_friends
-    access_token = self.token
-    @graph = Koala::Facebook::API.new(access_token)
-    friends = @graph.get_connections("me", "friends")
-
-    return friends
+      access_token = self.token
+      @graph = Koala::Facebook::API.new(access_token)
+      friends = @graph.get_connections("me", "friends")
+      return friends
   end
 end

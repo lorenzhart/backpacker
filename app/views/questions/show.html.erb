@@ -20,7 +20,7 @@
 <%= form_for([@question, @answer]) do |f| %>
 <div class="field">
 	<%= f.label :answer %>
-	<%= f.text_area :answer %>		
+	<%= f.text_field :answer %>
 </div>
 <div class="actions">
 	<%= f.submit %>	
@@ -29,36 +29,16 @@
 
 <h2>Path</h2>
 <span>解決できそうな友人を紹介してみよう</span>
-
-<ul>
-<% @friends.each do |friend| %>
-<li><%= friend["name"] %></li>
+<%= form_for [@question, @path] do |f| %>
+	<% @friends.each do |friend| %>
+	<div class="field">
+		<%= f.radio_button :to_user, friend["name"] %><%= friend["name"] %>
+	</div>
+	<% end %>
+	<div class="actions">
+		<%= f.submit %>	
+	</div>
 <% end %>
-</ul>
-
-<%= form_for(@question) do |f| %>
-<div class="field">
-	<%= f.label :title %>
-	<%= f.text_field :title %>	
-</div>
-
-<div class="field">
-	<%= f.label :content %>
-	<%= f.text_field :content %>
-</div>
-
-<div class="actions">
-
-	<%= f.submit %>	
-</div>
-
-<% end %>
-
-
-
-
-
-
 
 
 <%= link_to 'home', questions_path %>

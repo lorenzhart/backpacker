@@ -32,7 +32,7 @@
 <%= form_for [@question, @path] do |f| %>
 	<% @friends.each do |friend| %>
 	<div class="field">
-		<%= f.radio_button :to_user, friend["id"].to_i %><%= friend["name"] %>
+		<%= f.radio_button :to_user_id, friend["id"].to_i %><%= friend["name"] %>
 	</div>
 	<% end %>
 	<div class="actions">
@@ -41,15 +41,18 @@
 <% end %>
 
 <% if flash[:flag] %>
-	<script>	 
-		FB.ui({
-		    method: 'apprequests',
-		    message: 'A request especially for Daaku.',
-			to: <%= flash[:dialog_request_id] %>,
-			//to: 100001944823187,
-			data: 'send-to-one-42'
-		 }, Log.info.bind('send-to-one callback'));
-	</script>
+  <div id="fb-root"></div>
+  <script src="http://connect.facebook.net/en_US/all.js">
+  </script>
+  <script>
+    FB.init({ 
+      appId:'205338842958928', cookie:true, 
+      status:true, xfbml:true 
+    });
+
+    FB.ui({ method: 'apprequests', 
+      message: 'Here is a new Requests dialog...'});
+  </script>
 <% end %>
 
 

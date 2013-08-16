@@ -10,7 +10,7 @@ class PathsController < ApplicationController
 
 
 		if not User.find_by_id(params[:to_user_id])  
-			redirect_to question_path(params[:question_id]), :flash => {:flag => "1", :dialog_request_id => params[:to_user_id]}
+			redirect_to question_path(params[:question_id]), :flash => {:flag => "1", :dialog_request_id => params[:path][:to_user_id]}
 		end
 	end
 

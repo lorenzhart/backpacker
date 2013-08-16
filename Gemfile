@@ -6,7 +6,9 @@ gem 'rails', '4.0.0.rc2'
 
 #facebook authentification
 gem "devise"
+gem 'omniauth'
 gem "omniauth-facebook"
+gem 'oauth2'
 gem "fbgraph"
 #facebook api
 gem "koala"

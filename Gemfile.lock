@@ -189,6 +189,8 @@ DEPENDENCIES
   jquery-rails
   koala
   less-rails
+  oauth2
+  omniauth
   omniauth-facebook
   pg
   rails (= 4.0.0.rc2)

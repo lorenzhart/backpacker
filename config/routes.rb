@@ -7,6 +7,21 @@ Backpacker::Application.routes.draw do
     resources :answers
   end
   
+  #Facebook JavaScript SDK channel.html routing
+  # config/routes.rb
+  get '/channel.html' => proc {
+    [
+      200,
+      {
+        'Pragma'        => 'public',
+        'Cache-Control' => "max-age=#{1.year.to_i}",
+        'Expires'       => 1.year.from_now.to_s(:rfc822),
+        'Content-Type'  => 'text/html'
+      },
+      ['<script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>']
+    ]
+  }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

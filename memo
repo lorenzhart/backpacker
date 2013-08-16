@@ -10,10 +10,29 @@ show.html.erb の view から submitすると、
 		- Pathモデルの外部キーをidからuidにする
 		- Facebook宛にアプリ申請がいくようなコードを書く
 
-そのために、
 
-・外部キーに文字列をとるにはそれが主キーじゃないとダメっぽい
-・でもUserの主キー変更するとDeviseが巻き添えくらって死ぬ
+Javascript SDKの解説
+http://blogs.itmedia.co.jp/naoto/2010/11/post-8d25.html
 
-- 自分で関連を作るテク
-http://d.hatena.ne.jp/hichiriki/20081018
+Javascript SDKのサンプルコード
+http://socialmedia.project0884.com/facebook/js_sdk.php
+
+Send To Oneでいく
+https://developers.facebook.com/tools/console/
+
+Reqeust Dialogの日本語ドキュメント
+http://facebook-docs.oklahome.net/archives/51935792.html
+
+Request Dialog自体
+https://developers.facebook.com/docs/reference/dialogs/requests/
+
+Request Dialogの解説
+http://fb.dev-plus.jp/column1/column1_7/
+	
+http://fb.dev-plus.jp/reference/coreconcepts/channels/requests/
+
+	- 友人のタイムラインに書き込む
+	- 経由を表示
+	- 6回経由したら終了
+	
+

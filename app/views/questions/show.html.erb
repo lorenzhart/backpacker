@@ -40,5 +40,16 @@
 	</div>
 <% end %>
 
+<% if flash[:flag] %>
+	<script>	 
+		FB.ui({
+		    method: 'apprequests',
+		    message: 'A request especially for Daaku.',
+			to: //ここに選択したuserのidが入る,
+			data: 'send-to-one-42'
+		 }, Log.info.bind('send-to-one callback'));
+	</script>
+<% end %>
+
 
 <%= link_to 'home', questions_path %>

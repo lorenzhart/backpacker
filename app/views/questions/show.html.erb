@@ -49,9 +49,13 @@
       appId:'205338842958928', cookie:true, 
       status:true, xfbml:true 
     });
+	FB.ui({
+	 method: 'apprequests',
+	 message: 'facebookアプリのテストですよん.',
+	  to: <%= flash[:dialog_request_id] %>,
+	  data: 'send-to-one-42'
+	});
 
-    FB.ui({ method: 'apprequests', 
-      message: 'Here is a new Requests dialog...'});
   </script>
 <% end %>
 

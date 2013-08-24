@@ -4,6 +4,32 @@
 </ul>
 <%= link_to 'home', questions_path %>
 
+<h2>Path</h2>
+<div>
+<%=
+	#質問した人
+	#pathからquestionidで引いて、created_atで順に引き出す.
+	#0pathか1pathか2path以上かで分岐.
+	#0pathは表示しなし
+	#1pathはfromとto
+	#2path以上はfromとtoでその後のto
+%>
+	<ul>
+	<li>
+		<%= @question.user.name %><img width="2%" height="2%" src='<%= "https://graph.facebook.com/#{@question.user.uid.to_s}/picture"%>' class="img-circle" />
+	</li>
+	
+	<% @p.each do |p| %>
+		<li>
+			<img width="2%" height="2%" src='<%= "https://graph.facebook.com/#{p.to_user_id.to_s}/picture"%>' class="img-circle" />
+		</li>
+	<% end %>
+	
+
+	</ul>
+
+</div>
+
 <h2>Comments</h2>
 <ul>
 <% if @question.answers.any? %>

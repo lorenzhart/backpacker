@@ -10,7 +10,15 @@ class QuestionsController < ApplicationController
 		@question = Question.find(params[:id])
 		@answer = Question.find(params[:id]).answers.build
 		@friends = current_user.try(:facebook_friends)
-		@path = Path.new
+		@path = Path.new 
+		@p = @question.paths.order("created_at ASC")
+	#質問した人
+	#pathからquestionidで引いて、created_atで順に引き出す.
+	#0pathか1pathか2path以上かで分岐.
+	#0pathは表示しなし
+	#1pathはfromとto
+	#2path以上はfromとtoでその後のto
+
 	end
 
 	def create
